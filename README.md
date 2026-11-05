@@ -87,7 +87,7 @@ The dataset contains **1,000 customer records** and the following fields:
 
 Explore the interactive dashboard created to present the customer segmentation findings visually. *(Note: This dashboard was created with the assistance of AI).*
 
-👉 **[View Interactive Dashboard] (file:///Users/jiwangurung/Documents/CustomerMarketingAnalysisSQL/Customer%20Segmentation%20Dashboard.html)**
+👉 **[View Interactive Dashboard](file:///Users/jiwangurung/Documents/CustomerMarketingAnalysisSQL/Customer%20Segmentation%20Dashboard.html)**
 
 ---
 
