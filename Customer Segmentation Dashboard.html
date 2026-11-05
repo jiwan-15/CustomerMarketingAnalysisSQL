@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Customer Segmentation Dashboard</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#16202e;--mute:#5d6b7e;--line:#e1e5ea;--a:#1f6f8b;--b:#e08a1e;--c:#7a5cc7;--good:#2a9d6f;--bad:#c2483d;--track:#e9edf1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--card:#19212b;--ink:#e8edf3;--mute:#9aa8b9;--line:#2a3542;--a:#4fb3d1;--b:#f0a440;--c:#a58cf0;--good:#4cc795;--bad:#ee7a6f;--track:#263140}}
+:root[data-theme="dark"]{--bg:#10151c;--card:#19212b;--ink:#e8edf3;--mute:#9aa8b9;--line:#2a3542;--a:#4fb3d1;--b:#f0a440;--c:#a58cf0;--good:#4cc795;--bad:#ee7a6f;--track:#263140}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 40px}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--mute);margin:0 0 20px}
+h2{font-size:16px;margin:0 0 14px}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:14px}
+.two{grid-template-columns:repeat(auto-fit,minmax(310px,1fr));margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.k .v{font-size:24px;font-weight:700;line-height:1.2}
+.k .l{color:var(--mute);font-size:13px}
+.ok .v{color:var(--good)}
+.row{display:grid;grid-template-columns:110px 1fr 70px;align-items:center;gap:10px;margin:9px 0;font-size:14px}
+.tr{height:14px;background:var(--track);border-radius:7px;overflow:hidden}
+.tr i{display:block;height:100%;border-radius:7px;background:var(--a)}
+.row b{text-align:right;font-weight:600}
+.donut{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ring{width:140px;height:140px;border-radius:50%;background:conic-gradient(var(--a) 0 35.7%,var(--c) 35.7% 68.4%,var(--b) 68.4% 100%);display:grid;place-items:center}
+.ring span{width:84px;height:84px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:700;text-align:center;font-size:13px;line-height:1.2}
+.leg div{margin:6px 0;font-size:14px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.cor{display:grid;grid-template-columns:150px 1fr 56px;gap:10px;align-items:center;margin:12px 0;font-size:14px}
+.axis{position:relative;height:14px;background:var(--track);border-radius:7px}
+.axis:before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--mute)}
+.axis i{position:absolute;top:2px;width:10px;height:10px;border-radius:50%;background:var(--c);transform:translateX(-50%)}
+.note{color:var(--mute);font-size:13px;margin:10px 0 0}
+.tb{width:100%;border-collapse:collapse;font-size:14px}
+.tb td,.tb th{padding:7px 4px;border-bottom:1px solid var(--line);text-align:left}
+.tb th{color:var(--mute);font-weight:600;font-size:13px}
+.hi{color:var(--good);font-weight:700}.lo{color:var(--bad);font-weight:700}
+ul{margin:0;padding-left:18px}li{margin:6px 0}
+@media (max-width:480px){.row{grid-template-columns:90px 1fr 60px}.cor{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>Customer segmentation dashboard</h1>
+<p class="sub">Summary of 1,000 customers: demographics, categories, income groups and correlations.</p>
+
+<section class="grid kpis">
+<div class="card k"><div class="v">1,000</div><div class="l">Total customers</div></div>
+<div class="card k ok"><div class="v">0</div><div class="l">Duplicate records</div></div>
+<div class="card k ok"><div class="v">0</div><div class="l">Missing values</div></div>
+<div class="card k"><div class="v">43.78</div><div class="l">Average age (years)</div></div>
+<div class="card k"><div class="v">$88,500.80</div><div class="l">Average income</div></div>
+<div class="card k"><div class="v">50.69</div><div class="l">Average spending score</div></div>
+<div class="card k"><div class="v">5.47</div><div class="l">Average membership (years)</div></div>
+<div class="card k"><div class="v">26.60</div><div class="l">Average purchase frequency</div></div>
+<div class="card k"><div class="v">$492.35</div><div class="l">Average last purchase</div></div>
+</section>
+
+<section class="grid two">
+<div class="card"><h2>Gender distribution</h2>
+<div class="donut"><div class="ring"><span>1,000<br>customers</span></div>
+<div class="leg">
+<div><span class="dot" style="background:var(--a)"></span>Male: 35.70% (357)</div>
+<div><span class="dot" style="background:var(--c)"></span>Other: 32.70% (327)</div>
+<div><span class="dot" style="background:var(--b)"></span>Female: 31.60% (316)</div>
+</div></div>
+<p class="note">The split is relatively balanced.</p></div>
+
+<div class="card"><h2>Popular product categories</h2>
+<div class="row"><span>Electronics</span><div class="tr"><i style="width:100%"></i></div><b>21.50%</b></div>
+<div class="row"><span>Sports</span><div class="tr"><i style="width:97.7%"></i></div><b>21.00%</b></div>
+<div class="row"><span>Home &amp; Garden</span><div class="tr"><i style="width:95.8%"></i></div><b>20.60%</b></div>
+<div class="row"><span>Groceries</span><div class="tr"><i style="width:92.6%"></i></div><b>19.90%</b></div>
+<div class="row"><span>Clothing</span><div class="tr"><i style="width:79.1%"></i></div><b>17.00%</b></div>
+<p class="note">Electronics leads with 215 customers.</p></div>
+</section>
+
+<section class="grid two">
+<div class="card"><h2>Age groups: customer count</h2>
+<div class="row"><span>45–54</span><div class="tr"><i style="width:100%;background:var(--b)"></i></div><b>218</b></div>
+<div class="row"><span>55–64</span><div class="tr"><i style="width:94%"></i></div><b>205</b></div>
+<div class="row"><span>25–34</span><div class="tr"><i style="width:91.3%"></i></div><b>199</b></div>
+<p class="note">Top three groups shown. The 18–24 group has the highest average income ($91,287.46); the 35–44 group has the highest average spending score (55.84).</p></div>
+
+<div class="card"><h2>Income groups</h2>
+<div class="row"><span>High</span><div class="tr"><i style="width:100%;background:var(--c)"></i></div><b>400</b></div>
+<div class="row"><span>Medium</span><div class="tr"><i style="width:82.5%;background:var(--c)"></i></div><b>330</b></div>
+<div class="row"><span>Low</span><div class="tr"><i style="width:67.5%;background:var(--c)"></i></div><b>270</b></div>
+<p class="note">Spending scores are similar across groups; medium income is highest at 51.37. Income has little impact on spending behaviour.</p></div>
+</section>
+
+<section class="grid two">
+<div class="card"><h2>Average purchase amount by category</h2>
+<div class="row"><span>Home &amp; Garden</span><div class="tr"><i style="width:100%;background:var(--good)"></i></div><b>$505.60</b></div>
+<div class="row"><span>Electronics</span><div class="tr"><i style="width:98.2%;background:var(--good)"></i></div><b>$496.63</b></div>
+<div class="row"><span>Sports</span><div class="tr"><i style="width:95.3%;background:var(--bad)"></i></div><b>$481.95</b></div>
+<p class="note">Groceries has the highest average purchase frequency (27.16).</p></div>
+
+<div class="card"><h2>Top and bottom customers by last purchase</h2>
+<table class="tb"><tr><th>Group</th><th>Customer ID</th><th>Amount</th></tr>
+<tr><td>Top 1</td><td>267</td><td class="hi">$999.74</td></tr>
+<tr><td>Top 2</td><td>381</td><td class="hi">$998.98</td></tr>
+<tr><td>Bottom 1</td><td>486</td><td class="lo">$10.40</td></tr>
+<tr><td>Bottom 2</td><td>881</td><td class="lo">$11.01</td></tr></table>
+<p class="note">Top 10 range: $990.87 to $999.74. Bottom 10 range: $10.40 to $15.04.</p></div>
+</section>
+
+<section class="card" style="margin-bottom:14px"><h2>Correlation analysis (scale −1 to +1)</h2>
+<div class="cor"><span>Age and income</span><div class="axis"><i style="left:49.95%"></i></div><b>−0.001</b></div>
+<div class="cor"><span>Income and spending</span><div class="axis"><i style="left:50%"></i></div><b>0.000</b></div>
+<div class="cor"><span>Frequency and spending</span><div class="axis"><i style="left:50.35%"></i></div><b>0.007</b></div>
+<p class="note">All three sit at the centre line: almost no linear relationship.</p></section>
+
+<section class="card"><h2>Key takeaways</h2>
+<ul>
+<li>The data is clean: 1,000 unique customers with no missing values.</li>
+<li>Gender and category shares are close to even; Electronics and Male are the largest slices.</li>
+<li>Customers cluster in the 45–64 and 25–34 age bands.</li>
+<li>Age, income and purchase frequency do not predict spending score, so segments should use other signals such as category or membership length.</li>
+</ul></section>
+</main>
+</body>
+</html>
