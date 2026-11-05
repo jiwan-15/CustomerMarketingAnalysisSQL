@@ -87,7 +87,7 @@ The dataset contains **1,000 customer records** and the following fields:
 
 Explore the interactive dashboard created to present the customer segmentation findings visually. *(Note: This dashboard was created with the assistance of AI).*
 
-👉 **[View Interactive Dashboard](file:///Users/jiwangurung/Downloads/Customer%20Segmentation%20Dashboard.html)**
+👉 **[View Interactive Dashboard] (file:///Users/jiwangurung/Downloads/Customer%20Segmentation%20Dashboard.html)**
 
 ---
 
@@ -258,4 +258,4 @@ customer-segmentation-analysis/
 ## 👤 Author
 
 **Jiwan Gurung**
-* **LinkedIn:** [Jiwan Gurung](https://www.linkedin.com/in/jiwan-gurung-792088124/) # CustomerMarketingAnalysisSQL
+* **LinkedIn:** [Jiwan Gurung](https://www.linkedin.com/in/jiwan-gurung-792088124/) 
